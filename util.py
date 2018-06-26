@@ -14,8 +14,7 @@ def colYRatio(application_train, col, val):
 
 # 聚合函数，不同统计特征
 def groupBy(df, grp_col, target_col):
-    grp_df = df.groupby([grp_col])[target_col].agg(['count',
-                    'mean', 'max', 'min', 'sum']).reset_index()
+    grp_df = df.groupby([grp_col])[target_col].agg(['mean', 'max', 'min', 'sum']).reset_index()
     # 最小值、最大值与均值的比重
     grp_df['min_mean_ratio'] = grp_df['min'] / (grp_df['mean'] + 0.9999)
     grp_df['max_mean_ratio'] = grp_df['max'] / (grp_df['mean'] + 0.9999)
